@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Primary palette - أزرق #00bfff (مصدر اللون الوحيد) */
+:root {
+  --primary-50: #e6f7ff;
+  --primary-100: #b3ebff;
+  --primary-200: #80ddff;
+  --primary-300: #4dcfff;
+  --primary-400: #1ac1ff;
+  --primary-500: #00bfff;
+  --primary-600: #0099d6;
+  --primary-700: #0077ad;
+  --primary-800: #005585;
+  --primary-900: #003352;
+  --primary-950: #001a29;
+}
+
+[dir="rtl"] body {
+  font-family: 'Tajawal', system-ui, sans-serif;
+}
+
+[dir="ltr"] body {
+  font-family: 'Outfit', system-ui, sans-serif;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply antialiased text-gray-900 bg-gray-50;
+  overflow-x: hidden;
+}
+
+/* Safe area for notched devices (mobile) */
+.safe-area-top {
+  padding-top: env(safe-area-inset-top, 0);
+}
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+.safe-area-inset {
+  padding-left: env(safe-area-inset-left, 0);
+  padding-right: env(safe-area-inset-right, 0);
+}
+
+/* Skeleton animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgb(229 231 235) 25%,
+    rgb(243 244 246) 50%,
+    rgb(229 231 235) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Hide scrollbar but keep scroll accessible */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Smooth horizontal scroll for category rows */
+.horizontal-scroll-smooth {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* إجبار لون primary على الأزرق (يتجاوز أي كاش قديم) */
+.bg-primary-500 { background-color: var(--primary-500) !important; }
+.bg-primary-600 { background-color: var(--primary-600) !important; }
+.bg-primary-700 { background-color: var(--primary-700) !important; }
+.hover\:bg-primary-600:hover { background-color: var(--primary-600) !important; }
+.hover\:bg-primary-700:hover { background-color: var(--primary-700) !important; }
+.text-primary-500 { color: var(--primary-500) !important; }
+.text-primary-600 { color: var(--primary-600) !important; }
+.text-primary-700 { color: var(--primary-700) !important; }
+.hover\:text-primary-600:hover { color: var(--primary-600) !important; }
+.hover\:text-primary-700:hover { color: var(--primary-700) !important; }
+.border-primary-300 { border-color: var(--primary-300) !important; }
+.border-primary-500 { border-color: var(--primary-500) !important; }
+.focus\:ring-primary-500:focus { --tw-ring-color: var(--primary-500) !important; }
+.focus\:border-primary-500:focus { border-color: var(--primary-500) !important; }
+.ring-primary-500 { --tw-ring-color: var(--primary-500) !important; }
+.from-primary-500 { --tw-gradient-from: var(--primary-500) !important; }
+.to-primary-700 { --tw-gradient-to: var(--primary-700) !important; }
+.group:hover .group-hover\:text-primary-600 { color: var(--primary-600) !important; }
+.group:hover .group-hover\:text-primary-700 { color: var(--primary-700) !important; }
+.disabled\:bg-gray-400:disabled { background-color: rgb(156 163 175) !important; }
+.text-primary-400 { color: var(--primary-400) !important; }
+
+/* Content container - هوامش مريحة وفق أحجام الشاشات */
+.content-container {
+  width: 100%;
+  max-width: 90rem; /* 1440px - مساحة مريحة على الشاشات الواسعة */
+  margin-inline: auto;
+  padding-inline: 1rem;   /* 16px موبايل */
+}
+@media (min-width: 640px) {
+  .content-container { padding-inline: 1.5rem; } /* 24px تابلت */
+}
+@media (min-width: 1024px) {
+  .content-container { padding-inline: 2.5rem; } /* 40px ديسكتوب */
+}
+@media (min-width: 1280px) {
+  .content-container { padding-inline: 3rem; }   /* 48px شاشات كبيرة */
+}
+
+/* عرض كرت ديناميكي يتكيف مع جميع أحجام الشاشات */
+.card-width-fluid {
+  width: clamp(130px, 42vw, 280px);
+  min-width: clamp(130px, 42vw, 280px);
+  flex-shrink: 0;
+}
+
+/* نفس الهوامش للعناصر ذات التمرير الأفقي */
+.content-container-padding {
+  padding-inline: 1rem;
+}
+@media (min-width: 640px) {
+  .content-container-padding { padding-inline: 1.5rem; }
+}
+@media (min-width: 1024px) {
+  .content-container-padding { padding-inline: 2.5rem; }
+}
+@media (min-width: 1280px) {
+  .content-container-padding { padding-inline: 3rem; }
+}
+
+/* Sidebar nav: styled scrollbar on desktop */
+.sidebar-nav {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(75 85 99) transparent;
+}
+.sidebar-nav::-webkit-scrollbar {
+  width: 6px;
+}
+.sidebar-nav::-webkit-scrollbar-track {
+  background: transparent;
+}
+.sidebar-nav::-webkit-scrollbar-thumb {
+  background-color: rgb(75 85 99);
+  border-radius: 3px;
+}
+.sidebar-nav::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(107 114 128);
+}

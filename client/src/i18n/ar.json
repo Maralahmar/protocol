@@ -1,0 +1,113 @@
+{
+  "brand": "بروتوكول",
+  "sidebar": {
+    "label": "القائمة الجانبية",
+    "menu": "القائمة",
+    "settings": "الإعدادات",
+    "home": "الرئيسية",
+    "allUpcomingEvents": "جميع الأحداث القادمة",
+    "categories": "الفئات",
+    "faq": "الأسئلة الشائعة",
+    "helpCenter": "مركز المساعدة",
+    "terms": "شروط الاستخدام",
+    "privacy": "الخصوصية"
+  },
+  "nav": {
+    "allUpcomingEvents": "جميع الأحداث القادمة",
+    "categories": "الفئات",
+    "search": "بحث...",
+    "filter": "تصفية",
+    "resetFilter": "إعادة تعيين",
+    "login": "تسجيل الدخول",
+    "logout": "تسجيل الخروج"
+  },
+  "categories": {
+    "allUpcomingEvents": "جميع الأحداث القادمة",
+    "events": "الفعاليات",
+    "restaurants": "المطاعم",
+    "activity": "النشاطات",
+    "concerts": "حفلات",
+    "experiences": "التجارب",
+    "entertainment": "الترفيه",
+    "theatrical": "مسرحيات",
+    "entry": "دخول",
+    "shop": "التسوق",
+    "cinemas": "السينما"
+  },
+  "hero": {
+    "slide1": {
+      "title": "اكتشف أفضل الفعاليات",
+      "description": "استكشف مئات الفعاليات والحفلات والمطاعم في RUH BLVD CITY و BLVD WORLD وأكثر"
+    },
+    "slide2": {
+      "title": "احجز بسهولة",
+      "description": "احجز تذكرتك أو طاولتك في دقائق"
+    },
+    "slide3": {
+      "title": "تجارب لا تُنسى",
+      "description": "استمتع بتجارب فريدة مع من تحب"
+    },
+    "slide4": {
+      "title": "عروض حصرية",
+      "description": "احصل على أفضل العروض والخصومات"
+    },
+    "slide5": {
+      "title": "في كل مكان",
+      "description": "الفعاليات في RUH BLVD CITY و BLVD WORLD و The Groves وأكثر"
+    },
+    "cta": "استكشف الآن"
+  },
+  "common": {
+    "viewAll": "عرض الكل",
+    "book": "احجز",
+    "soldOut": "نفدت",
+    "topRated": "الأعلى تقييماً",
+    "newest": "الأحدث",
+    "sortBy": "ترتيب حسب",
+    "search": "بحث",
+    "location": "الموقع",
+    "city": "المدينة",
+    "priceRange": "نطاق السعر",
+    "date": "التاريخ",
+    "allLocations": "جميع المواقع",
+    "allCities": "جميع المدن",
+    "allPrices": "جميع الأسعار",
+    "allDates": "جميع التواريخ"
+  },
+  "event": {
+    "rating": "التقييم",
+    "location": "الموقع",
+    "time": "الوقت",
+    "price": "السعر",
+    "bookNow": "احجز الآن",
+    "gallery": "معرض الصور"
+  },
+  "category": {
+    "title": "الفئة",
+    "results": "نتيجة"
+  },
+  "login": {
+    "title": "تسجيل الدخول",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "submit": "دخول",
+    "placeholderEmail": "أدخل بريدك الإلكتروني",
+    "placeholderPassword": "أدخل كلمة المرور"
+  },
+  "footer": {
+    "categories": "الفئات",
+    "copyright": "جميع الحقوق محفوظة",
+    "poweredBy": "مدعوم من mariam"
+  },
+  "locations": {
+    "ruhBlvdCity": "RUH BLVD CITY",
+    "blvdWorld": "BLVD WORLD",
+    "theGroves": "The Groves",
+    "kingdomArena": "KINGDOM ARENA",
+    "viaRiyadh": "VIA RIYADH"
+  },
+  "app": {
+    "download": "حمل التطبيق",
+    "availableOn": "متوفر على"
+  }
+}

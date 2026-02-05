@@ -1,0 +1,113 @@
+{
+  "brand": "Protocol",
+  "sidebar": {
+    "label": "Sidebar navigation",
+    "menu": "Menu",
+    "settings": "Settings",
+    "home": "Home",
+    "allUpcomingEvents": "All Upcoming Events",
+    "categories": "Categories",
+    "faq": "FAQ",
+    "helpCenter": "Help Center",
+    "terms": "Terms of Use",
+    "privacy": "Privacy"
+  },
+  "nav": {
+    "allUpcomingEvents": "All Upcoming Events",
+    "categories": "Categories",
+    "search": "Search...",
+    "filter": "Filter",
+    "resetFilter": "Reset",
+    "login": "Login",
+    "logout": "Logout"
+  },
+  "categories": {
+    "allUpcomingEvents": "All Upcoming Events",
+    "events": "Events",
+    "restaurants": "Restaurants",
+    "activity": "Activity",
+    "concerts": "Concerts",
+    "experiences": "Experiences",
+    "entertainment": "Entertainment",
+    "theatrical": "Theatrical Show",
+    "entry": "Entry",
+    "shop": "Shop",
+    "cinemas": "Cinemas"
+  },
+  "hero": {
+    "slide1": {
+      "title": "Discover the Best Events",
+      "description": "Explore hundreds of events, concerts, and restaurants at RUH BLVD CITY, BLVD WORLD and more"
+    },
+    "slide2": {
+      "title": "Book with Ease",
+      "description": "Book your ticket or table in minutes"
+    },
+    "slide3": {
+      "title": "Unforgettable Experiences",
+      "description": "Enjoy unique experiences with the ones you love"
+    },
+    "slide4": {
+      "title": "Exclusive Offers",
+      "description": "Get the best deals and discounts"
+    },
+    "slide5": {
+      "title": "Everywhere You Go",
+      "description": "Events at RUH BLVD CITY, BLVD WORLD, The Groves and more"
+    },
+    "cta": "Explore Now"
+  },
+  "common": {
+    "viewAll": "View all",
+    "book": "Book",
+    "soldOut": "Sold Out",
+    "topRated": "Top rated",
+    "newest": "Newest",
+    "sortBy": "Sort by",
+    "search": "Search",
+    "location": "Location",
+    "city": "City",
+    "priceRange": "Price range",
+    "date": "Date",
+    "allLocations": "All locations",
+    "allCities": "All cities",
+    "allPrices": "All prices",
+    "allDates": "All dates"
+  },
+  "event": {
+    "rating": "Rating",
+    "location": "Location",
+    "time": "Time",
+    "price": "Price",
+    "bookNow": "Book Now",
+    "gallery": "Photo gallery"
+  },
+  "category": {
+    "title": "Category",
+    "results": "results"
+  },
+  "login": {
+    "title": "Login",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Sign In",
+    "placeholderEmail": "Enter your email",
+    "placeholderPassword": "Enter your password"
+  },
+  "footer": {
+    "categories": "Categories",
+    "copyright": "All rights reserved",
+    "poweredBy": "Powered by mariam"
+  },
+  "locations": {
+    "ruhBlvdCity": "RUH BLVD CITY",
+    "blvdWorld": "BLVD WORLD",
+    "theGroves": "The Groves",
+    "kingdomArena": "KINGDOM ARENA",
+    "viaRiyadh": "VIA RIYADH"
+  },
+  "app": {
+    "download": "Download the app",
+    "availableOn": "Available on"
+  }
+}
