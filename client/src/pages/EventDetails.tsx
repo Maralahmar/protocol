@@ -57,6 +57,7 @@ export default function EventDetails() {
   }
 
   const title = event.title[isAr ? 'ar' : 'en']
+  const images = Array.isArray(event.images) ? event.images : []
   const formatTime = (iso: string) =>
     new Date(iso).toLocaleString(isAr ? 'ar-SA' : 'en-US', {
       dateStyle: 'full',
@@ -68,14 +69,14 @@ export default function EventDetails() {
       <div className="mb-8">
         <div className="aspect-video rounded-xl overflow-hidden bg-gray-100 mb-6">
           <img
-            src={event.images[galleryIndex] ?? event.images[0]}
+            src={images[galleryIndex] ?? images[0]}
             alt=""
             className="w-full h-full object-cover"
           />
         </div>
-        {event.images.length > 1 && (
+        {images.length > 1 && (
           <div className="flex gap-2 overflow-x-auto pb-2" role="tablist">
-            {event.images.map((img, i) => (
+            {images.map((img, i) => (
               <button
                 key={i}
                 type="button"

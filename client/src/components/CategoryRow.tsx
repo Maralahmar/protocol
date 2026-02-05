@@ -16,10 +16,11 @@ interface CategoryRowProps {
   isLoading?: boolean
 }
 
-export default function CategoryRow({ titleKey, slug, items, isLoading }: CategoryRowProps) {
+export default function CategoryRow({ titleKey, slug, items = [], isLoading }: CategoryRowProps) {
   const { t, i18n } = useTranslation()
   const title = t(`categories.${titleKey}`)
   const isAr = i18n.language === 'ar'
+  const list = Array.isArray(items) ? items : []
 
   return (
     <section className="py-8 lg:py-10" aria-labelledby={`section-${slug}`}>
@@ -44,7 +45,7 @@ export default function CategoryRow({ titleKey, slug, items, isLoading }: Catego
               </div>
             ))
           : (() => {
-              const visible = items.slice(0, 10)
+              const visible = list.slice(0, 10)
               const needPlaceholders = visible.length < MIN_VISIBLE_CARDS
               const placeholdersCount = needPlaceholders
                 ? Math.min(MIN_VISIBLE_CARDS - visible.length, 10 - visible.length)

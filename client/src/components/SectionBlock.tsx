@@ -11,9 +11,10 @@ interface SectionBlockProps {
   isLoading?: boolean
 }
 
-export default function SectionBlock({ titleKey, slug, events, isLoading }: SectionBlockProps) {
+export default function SectionBlock({ titleKey, slug, events = [], isLoading }: SectionBlockProps) {
   const { t } = useTranslation()
   const title = t(`categories.${titleKey}`)
+  const list = Array.isArray(events) ? events : []
 
   return (
     <section className="py-12 lg:py-16" aria-labelledby={`section-${slug}`}>
@@ -32,7 +33,7 @@ export default function SectionBlock({ titleKey, slug, events, isLoading }: Sect
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {isLoading
             ? Array.from({ length: 6 }).map((_, i) => <EventCardSkeleton key={i} />)
-            : events.slice(0, 6).map((event) => <EventCard key={event.id} event={event} />)}
+            : list.slice(0, 6).map((event) => <EventCard key={event.id} event={event} />)}
         </div>
       </div>
     </section>

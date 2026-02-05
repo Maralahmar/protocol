@@ -37,7 +37,7 @@ export function useCategories() {
     queryKey: ['categories'],
     queryFn: async () => {
       const { data } = await api.get<Category[]>('/categories')
-      return data
+      return Array.isArray(data) ? data : []
     },
   })
 }
@@ -47,7 +47,7 @@ export function useEvents(params: EventsParams = {}) {
     queryKey: ['events', params],
     queryFn: async () => {
       const { data } = await api.get<Event[]>('/events', { params })
-      return data
+      return Array.isArray(data) ? data : []
     },
   })
 }
