@@ -1,5 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { api } from './client'
+import { FALLBACK_CATEGORIES, FALLBACK_EVENTS } from '../data/fallback'
 
 export interface Event {
   id: string
@@ -36,18 +37,52 @@ export function useCategories() {
   return useQuery({
     queryKey: ['categories'],
     queryFn: async () => {
-      const { data } = await api.get<Category[]>('/categories')
-      return Array.isArray(data) ? data : []
+      try {
+        const { data } = await api.get<Category[]>('/categories')
+        if (Array.isArray(data) && data.length > 0) return data
+      } catch {
+        // API unavailable (e.g. static deploy)
+      }
+      return FALLBACK_CATEGORIES
     },
   })
+}
+
+function filterFallbackEvents(events: Event[], params: EventsParams): Event[] {
+  let list = [...events]
+  if (params.category) {
+    list = list.filter((e) => e.category === params.category)
+  }
+  if (params.search?.trim()) {
+    const q = params.search.trim().toLowerCase()
+    list = list.filter(
+      (e) =>
+        e.title.ar.toLowerCase().includes(q) ||
+        e.title.en.toLowerCase().includes(q)
+    )
+  }
+  if (params.location) {
+    list = list.filter((e) => e.location === params.location)
+  }
+  if (params.sort === 'newest') {
+    list.sort((a, b) => new Date(b.startTime).getTime() - new Date(a.startTime).getTime())
+  } else {
+    list.sort((a, b) => b.rating - a.rating)
+  }
+  return list
 }
 
 export function useEvents(params: EventsParams = {}) {
   return useQuery({
     queryKey: ['events', params],
     queryFn: async () => {
-      const { data } = await api.get<Event[]>('/events', { params })
-      return Array.isArray(data) ? data : []
+      try {
+        const { data } = await api.get<Event[]>('/events', { params })
+        if (Array.isArray(data) && data.length > 0) return data
+      } catch {
+        // API unavailable (e.g. static deploy)
+      }
+      return filterFallbackEvents(FALLBACK_EVENTS, params)
     },
   })
 }
@@ -56,8 +91,15 @@ export function useEvent(id: string | undefined) {
   return useQuery({
     queryKey: ['event', id],
     queryFn: async () => {
-      const { data } = await api.get<Event>(`/events/${id}`)
-      return data
+      try {
+        const { data } = await api.get<Event>(`/events/${id}`)
+        if (data && typeof data === 'object' && data.id) return data
+      } catch {
+        // API unavailable
+      }
+      const fallback = FALLBACK_EVENTS.find((e) => e.id === id)
+      if (fallback) return fallback
+      throw new Error('Event not found')
     },
     enabled: !!id,
   })
