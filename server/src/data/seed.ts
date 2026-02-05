@@ -61,6 +61,84 @@ function randomDate(daysAhead: number): string {
   return d.toISOString()
 }
 
+const FIXED_EVENTS_CONTENT: Omit<Event, 'id' | 'images'>[] = [
+  {
+    title: { ar: 'BLVD Forest', en: 'BLVD Forest' },
+    description: {
+      ar: 'يعود BLVD Forest بحيوانات نادرة في أجواء أفريقية جديدة. استمتع بتجارب تفاعلية مع الحياة البرية! (لجميع الأعمار)',
+      en: 'BLVD Forest returns with rare exotic animals in a new African-inspired setting. Enjoy interactive wildlife experiences! (For all Ages)',
+    },
+    category: 'experiences',
+    location: 'BLVD WORLD',
+    venue: 'BLVD WORLD',
+    startTime: '2025-11-10T16:00:00.000Z',
+    endTime: '2026-02-28T23:55:00.000Z',
+    price: 150,
+    rating: 5,
+    soldOut: false,
+  },
+  {
+    title: { ar: 'غرفة الهروب: سر الفرعون', en: 'Escape Room: Secret of the Pharaoh' },
+    description: {
+      ar: 'أبواب غامضة وألغاز قديمة وكنوز ضائعة بانتظار من يجرؤ على الدخول... مساران فقط: أحدهما للنجاة والآخر للمجهول. أي مصير ستختار؟',
+      en: 'Mysterious doors, ancient puzzles, and lost treasures await those who dare to enter... Only two paths: one leads to survival, the other to the unknown. Which fate will you choose?',
+    },
+    category: 'experiences',
+    location: 'BLVD WORLD',
+    venue: 'BLVD WORLD',
+    startTime: '2025-11-10T16:00:00.000Z',
+    endTime: '2026-01-31T23:55:00.000Z',
+    price: 200,
+    rating: 5,
+    soldOut: false,
+  },
+  {
+    title: { ar: 'ZAMA ZULU', en: 'ZAMA ZULU' },
+    description: {
+      ar: 'استعد لاستشعار إيقاع الزولو! يعود زاما زولو بنكهات جنوب أفريقية وآسيوية حارة وإيقاعات حية وأجواء ستبقيك ترقص على الطاولة.',
+      en: 'Get ready to feel the Zulu beat! Zama Zulu returns with sizzling South African and South Asian flavors, live rhythms, and an ambiance that will keep you dancing at your table.',
+    },
+    category: 'restaurants',
+    location: 'The Groves',
+    venue: 'ZAMA ZULU',
+    startTime: '2026-01-12T16:00:00.000Z',
+    endTime: '2026-02-07T00:00:00.000Z',
+    price: 180,
+    rating: 5,
+    soldOut: false,
+  },
+  {
+    title: { ar: 'مدرسة التزلج', en: 'Ski School' },
+    description: {
+      ar: 'اكتشف دروس تزلج احترافية في مدرسة التزلج في كورشفيل، مناسبة لجميع المستويات ومغامرة رائعة للعائلة بأكملها.',
+      en: 'Discover expert skiing lessons at the ski school in Courchevel, perfect for all levels and a great adventure for the whole family.',
+    },
+    category: 'activity',
+    location: 'BLVD WORLD',
+    venue: 'BLVD WORLD',
+    startTime: '2025-11-30T16:00:00.000Z',
+    endTime: '2026-02-28T00:00:00.000Z',
+    price: 250,
+    rating: 5,
+    soldOut: false,
+  },
+  {
+    title: { ar: 'الزمانكان', en: 'ALZAMAKAN' },
+    description: {
+      ar: 'مسرحية سعودية عن طلاب ومعلمهم يستخدمون آلة زمن للكشف عن أسرار التاريخ، ليجدوا أنفسهم منقولين إلى عصور مختلفة.',
+      en: "A Saudi play about students and their teacher using a time machine to uncover history's secrets, only to be unexpectedly transported to different eras.",
+    },
+    category: 'theatrical',
+    location: 'RUH BLVD CITY',
+    venue: 'RUH BLVD CITY',
+    startTime: '2025-12-01T16:00:00.000Z',
+    endTime: '2026-03-01T23:00:00.000Z',
+    price: 120,
+    rating: 5,
+    soldOut: true,
+  },
+]
+
 function generateEvents(): Event[] {
   const events: Event[] = []
   let id = 1
@@ -87,6 +165,17 @@ function generateEvents(): Event[] {
         soldOut: Math.random() < 0.15,
         images,
       })
+    }
+  }
+
+  // استبدال محتوى أول 5 فعاليات بالمحتوى من الصور (مع الإبقاء على الصور دون تغيير)
+  for (let i = 0; i < FIXED_EVENTS_CONTENT.length && i < events.length; i++) {
+    const fixed = FIXED_EVENTS_CONTENT[i]
+    events[i] = {
+      ...events[i],
+      ...fixed,
+      id: events[i].id,
+      images: events[i].images,
     }
   }
 

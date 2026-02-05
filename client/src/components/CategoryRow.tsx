@@ -3,9 +3,11 @@ import { useTranslation } from 'react-i18next'
 import HorizontalScroller from './HorizontalScroller'
 import EventCard from './EventCard'
 import EventCardSkeleton from './EventCardSkeleton'
+import ComingSoonCard from './ComingSoonCard'
 import type { Event } from '../api/hooks'
 
 const CARD_WIDTH_CLASS = 'card-width-fluid snap-start'
+const MIN_VISIBLE_CARDS = 4
 
 interface CategoryRowProps {
   titleKey: string
@@ -41,11 +43,27 @@ export default function CategoryRow({ titleKey, slug, items, isLoading }: Catego
                 <EventCardSkeleton />
               </div>
             ))
-          : items.slice(0, 10).map((event) => (
-              <div key={event.id} className={CARD_WIDTH_CLASS} role="listitem">
-                <EventCard event={event} />
-              </div>
-            ))}
+          : (() => {
+              const visible = items.slice(0, 10)
+              const needPlaceholders = visible.length < MIN_VISIBLE_CARDS
+              const placeholdersCount = needPlaceholders
+                ? Math.min(MIN_VISIBLE_CARDS - visible.length, 10 - visible.length)
+                : 0
+              return (
+                <>
+                  {visible.map((event) => (
+                    <div key={event.id} className={CARD_WIDTH_CLASS} role="listitem">
+                      <EventCard event={event} />
+                    </div>
+                  ))}
+                  {Array.from({ length: placeholdersCount }).map((_, i) => (
+                    <div key={`coming-soon-${i}`} className={CARD_WIDTH_CLASS} aria-hidden>
+                      <ComingSoonCard />
+                    </div>
+                  ))}
+                </>
+              )
+            })()}
       </HorizontalScroller>
     </section>
   )
